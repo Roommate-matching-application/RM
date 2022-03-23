@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,8 +25,9 @@ public class signup extends AppCompatActivity {
     private EditText age_join,name_join;
     private Button btn;
     FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabaseRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class signup extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,12 +51,24 @@ public class signup extends AppCompatActivity {
                 firebaseAuth.createUserWithEmailAndPassword(email, pwd)
                         .addOnCompleteListener(signup.this, new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onComplete(@NonNull Task<AuthResult> task) { // 회원가입이 성공했을 때
 
                                 if (task.isSuccessful()) {
+
+                                    FirebaseUser firebaseUser =firebaseAuth.getCurrentUser();
+                                    userAccount account = new userAccount ();
+                                    account.setIdToken(firebaseUser.getUid());
+                                    account.setEmailId(firebaseUser.getEmail());
+                                    account.setPassword(pwd);
+
+                                    //setValue가 데이터 insert
+                                    mDatabaseRef.child("userAccount").child(firebaseUser.getUid()).setValue(account);
+                                    Toast.makeText(signup.this, "회원 가입되었습니다.", Toast.LENGTH_SHORT).show();
+
                                     Intent intent = new Intent(signup.this, login.class);
                                     startActivity(intent);
                                     finish();
+
 
                                 } else {
                                     Toast.makeText(signup.this, "등록 에러", Toast.LENGTH_SHORT).show();
