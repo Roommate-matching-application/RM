@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mop125">
         <activity
+            android:name=".myChecklist"
+            android:exported="false" />
+        <activity
             android:name=".login"
             android:exported="true">
             <intent-filter>
@@ -19,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".signup" />
-        <activity android:name=".afterlogin"/>
+        <activity android:name=".afterlogin" />
     </application>
 
 </manifest>

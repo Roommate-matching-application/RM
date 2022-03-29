@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:text="내가 어떤사람인지 테스트하기"
             android:textStyle="bold">
-
         </Button>
 
     <Button

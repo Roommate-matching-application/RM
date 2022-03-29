@@ -55,7 +55,7 @@ public class signup extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
 
-                                    FirebaseUser firebaseUser =firebaseAuth.getCurrentUser();
+                                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                                     userAccount account = new userAccount ();
                                     account.setIdToken(firebaseUser.getUid());
                                     account.setEmailId(firebaseUser.getEmail());

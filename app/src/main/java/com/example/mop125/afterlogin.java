@@ -26,7 +26,15 @@ public class afterlogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afterlogin);
         GoTest = (Button) findViewById(R.id.nextButton);
-//여기로 안넘어옴!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        GoTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(com.example.mop125.afterlogin.this, myChecklist.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
