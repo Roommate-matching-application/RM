@@ -15,7 +15,7 @@
     </TextView>
 //여기에 닉네임 설정창 들어가도 괜찮을듯합니다...
         <Button
-            android:id="@+id/nextButton"
+            android:id="@+id/nextButton_myChecklist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="내가 어떤사람인지 테스트하기"
@@ -23,6 +23,7 @@
         </Button>
 
     <Button
+        android:id="@+id/nextButton_roommateChecklist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="원하는 룸메이트는 어떤 사람인지 테스트하기"
