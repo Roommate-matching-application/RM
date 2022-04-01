@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mop125">
         <activity
+            android:name=".ShowMatches"
+            android:exported="false" />
+        <activity
+            android:name=".ShowData"
+            android:exported="false" />
+        <activity
+            android:name=".GetMatches"
+            android:exported="false" />
+        <activity
             android:name=".roommateChecklist"
             android:exported="false" />
         <activity
