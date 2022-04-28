@@ -13,7 +13,6 @@
         android:text="반갑습니다!\n몇 가지 질문에 답해주시면 회원님과 꼭 맞는\n룸메이트를 찾아드릴게요!">
 
     </TextView>
-//여기에 닉네임 설정창 들어가도 괜찮을듯합니다...
         <Button
             android:id="@+id/nextButton_myChecklist"
             android:layout_width="match_parent"
