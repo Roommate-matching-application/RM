@@ -3,6 +3,7 @@ package com.example.mop125;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -110,6 +111,9 @@ public class roommateChecklist extends AppCompatActivity {
                     member.setSmoke2(cg2_2.getText().toString());
                     reference.child(String.valueOf(i+1)).setValue(member);
                 }
+
+                Intent intent = new Intent(com.example.mop125.roommateChecklist.this, ShowMatches.class);
+                startActivity(intent);
             }
         });
 

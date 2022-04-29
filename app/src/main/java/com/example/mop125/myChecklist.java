@@ -1,5 +1,6 @@
 package com.example.mop125;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,12 +31,15 @@ public class myChecklist extends AppCompatActivity {
     Member member;
     int i = 0;
 
-    String[] items = {"95", "96", "97", "98", "99", "00", "01", "02","03","04"}; //나이
+    final String[] items = {"95", "96", "97", "98", "99", "00", "01", "02","03","04"}; //나이
+    final String[] items2 = {"가천대학교", "경희대학교", "고려대학교", "서울대학교", "서울과학기술대학교", "성균관대학교",
+            "연세대학교", "중앙대학교","홍익대학교","한양대학교"}; //대학교
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_checklist);
-        Spinner spinner = findViewById(R.id.spinner_age);
+        Spinner spinner = (Spinner)findViewById(R.id.spinner_age);
+        Spinner spinner2 = (Spinner)findViewById(R.id.spinner_university);
         initPreferences();
         loadState();
 
@@ -70,6 +74,9 @@ public class myChecklist extends AppCompatActivity {
 
                 member.setRg2(String.valueOf((int)rg2_wakeuptime.getCheckedRadioButtonId()));
                 reference.child(String.valueOf(i+1)).setValue(member);
+
+                Intent intent = new Intent(com.example.mop125.myChecklist.this, afterlogin.class);
+                startActivity(intent);
             }
         });
 
@@ -80,10 +87,21 @@ public class myChecklist extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setSelection(sharedPreferences.getInt("spinner_age", 1));
+
+        //대학교 선택 spinner
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_dropdown_item, items2
+        );
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter2);
+        spinner2.setSelection(Integer.parseInt(sharedPreferences.getString("spinner_university","1")));
+
     }
 
+
     @Override
-    protected void onStop() {
+    protected void onStop()
+    {
         super.onStop();
         saveState();
     }
@@ -94,11 +112,13 @@ public class myChecklist extends AppCompatActivity {
 
     private void saveState(){
         Spinner spinner = findViewById(R.id.spinner_age);
+        Spinner spinner2 = findViewById(R.id.spinner_university);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("rg1", String.valueOf((int)rg1_sleeptime.getCheckedRadioButtonId()));
         editor.putString("rg2", String.valueOf((int)rg2_wakeuptime.getCheckedRadioButtonId()));
-        //Log.d("whatissavedid", String.valueOf((int)rg_sleeptime.getCheckedRadioButtonId()));
+
         editor.putInt("spinner_age", spinner.getSelectedItemPosition());
+        editor.putString("spinner_university", String.valueOf(spinner2.getSelectedItemPosition()));
         editor.commit();
     }
 
@@ -109,10 +129,7 @@ public class myChecklist extends AppCompatActivity {
         try {
             id = Integer.parseInt(sharedPreferences.getString("rg1", "0"));
             id2 = Integer.parseInt(sharedPreferences.getString("rg2", "0"));
-
         } catch (NullPointerException e) { }
-
-        Log.d("whatisid", String.valueOf(id));
 
         if (id == 0) ((RadioButton) findViewById(R.id.rg1_1)).setChecked(true);
         else ((RadioButton) findViewById(id)).setChecked(true);

@@ -34,6 +34,8 @@ public class afterlogin extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(com.example.mop125.afterlogin.this, myChecklist.class);
                 startActivity(intent);
+
+
             }
         });
 
@@ -42,6 +44,7 @@ public class afterlogin extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(com.example.mop125.afterlogin.this, roommateChecklist.class);
                 startActivity(intent);
+
             }
         });
 

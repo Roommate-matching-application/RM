@@ -23,7 +23,6 @@ public class login extends AppCompatActivity {
 
     private Button join;
     private Button login;
-    private Button facebookLogin;//나중에 변경
     private EditText email_login;
     private EditText pwd_login;
     private DatabaseReference mDataRef;//실시간 데이터베이스
@@ -38,7 +37,6 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         join = (Button) findViewById(R.id.Signup);
-        facebookLogin = (Button) findViewById(R.id.loginFacebook);
         login = (Button) findViewById(R.id.login);//로그인버튼
         email_login = (EditText) findViewById(R.id.loginEmail);//이메일 입력
         pwd_login = (EditText) findViewById(R.id.loginPassword);//비밀번호 입력
@@ -72,7 +70,6 @@ public class login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(com.example.mop125.login.this, signup.class);
                 startActivity(intent);
-
             }
         });
     }

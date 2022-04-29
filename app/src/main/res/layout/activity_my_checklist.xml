@@ -33,6 +33,20 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="대학교"
+        android:textSize="17dp"
+        android:padding="5dp"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_university"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="취침시간"
         android:textSize="17dp"
         android:padding="5dp"

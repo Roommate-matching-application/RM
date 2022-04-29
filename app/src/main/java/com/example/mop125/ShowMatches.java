@@ -12,7 +12,6 @@ package com.example.mop125;
 
 
 public class ShowMatches extends AppCompatActivity {
-
     LinearLayout container;
     LayoutInflater inflater;
     Button getInfo;
