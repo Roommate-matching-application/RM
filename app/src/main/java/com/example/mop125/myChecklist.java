@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -14,6 +15,10 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,11 +34,16 @@ public class myChecklist extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     Member member;
+
+    FirebaseAuth firebaseAuth;
+    private DatabaseReference mDatabaseRef;
     int i = 0;
 
-    final String[] items = {"95", "96", "97", "98", "99", "00", "01", "02","03","04"}; //나이
+    final String[] items = {"19", "20", "21", "22", "23", "24", "25", "26","27","28"}; //나이
     final String[] items2 = {"가천대학교", "경희대학교", "고려대학교", "서울대학교", "서울과학기술대학교", "성균관대학교",
             "연세대학교", "중앙대학교","홍익대학교","한양대학교"}; //대학교
+    String university;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +52,10 @@ public class myChecklist extends AppCompatActivity {
         Spinner spinner2 = (Spinner)findViewById(R.id.spinner_university);
         initPreferences();
         loadState();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         reference = database.getInstance().getReference().child("age");
         member = new Member();
@@ -75,7 +89,10 @@ public class myChecklist extends AppCompatActivity {
                 member.setRg2(String.valueOf((int)rg2_wakeuptime.getCheckedRadioButtonId()));
                 reference.child(String.valueOf(i+1)).setValue(member);
 
-                Intent intent = new Intent(com.example.mop125.myChecklist.this, afterlogin.class);
+                mDatabaseRef.child("userAccount").child(firebaseUser.getUid()).child(String.valueOf(firebaseUser.getIdToken(true)))
+                        .setValue(university);
+
+                Intent intent = new Intent(myChecklist.this, afterlogin.class);
                 startActivity(intent);
             }
         });
@@ -94,8 +111,21 @@ public class myChecklist extends AppCompatActivity {
         );
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
-        spinner2.setSelection(Integer.parseInt(sharedPreferences.getString("spinner_university","1")));
+        spinner2.setSelection(Integer.parseInt(sharedPreferences.getString("spinner_university","0")));
 
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                int universitiyNum = spinner2.getSelectedItemPosition();
+
+                university = items2[universitiyNum].trim();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                university = items2[0].trim();
+            }
+        });
     }
 
 
