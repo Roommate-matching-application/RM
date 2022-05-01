@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;//
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -53,8 +54,11 @@ public class login extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {//성공했을때
+                                    FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(com.example.mop125.login.this, "환영합니다!", Toast.LENGTH_SHORT).show();
+
                                     Intent intent = new Intent(com.example.mop125.login.this, afterlogin.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                 } else {//실패했을때
                                     Toast.makeText(com.example.mop125.login.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();

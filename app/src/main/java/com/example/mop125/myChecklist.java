@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,43 +27,48 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class myChecklist extends AppCompatActivity {
+    private static final String TAG = "myCheckList";
 
     static SharedPreferences sharedPreferences;
     static RadioGroup rg1_sleeptime;
     static RadioGroup rg2_wakeuptime;
     Button btn_my;
+
     FirebaseDatabase database;
     DatabaseReference reference;
-    Member member;
-
     FirebaseAuth firebaseAuth;
-    private DatabaseReference mDatabaseRef;
+
+    Member member;
+    userAccount account;
+
     int i = 0;
+    String university;
 
     final String[] items = {"19", "20", "21", "22", "23", "24", "25", "26","27","28"}; //나이
     final String[] items2 = {"가천대학교", "경희대학교", "고려대학교", "서울대학교", "서울과학기술대학교", "성균관대학교",
             "연세대학교", "중앙대학교","홍익대학교","한양대학교"}; //대학교
-    String university;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_checklist);
-        Spinner spinner = (Spinner)findViewById(R.id.spinner_age);
-        Spinner spinner2 = (Spinner)findViewById(R.id.spinner_university);
-        initPreferences();
-        loadState();
 
         firebaseAuth = FirebaseAuth.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();//유저 정보 get
 
-        reference = database.getInstance().getReference().child("age");
-        member = new Member();
+        Spinner spinner = (Spinner)findViewById(R.id.spinner_age);//나이 선택 스피너
+        Spinner spinner2 = (Spinner)findViewById(R.id.spinner_university);//대학 선택 스피너
+        btn_my = findViewById(R.id.btn_my);//버튼
+        rg1_sleeptime = findViewById(R.id.rg1_sleeptime);//rg1 = 취침시간
+        rg2_wakeuptime = findViewById(R.id.rg2_wakeuptime);//rg2 = 기상시간
 
-        btn_my = findViewById(R.id.btn_my);
-        rg1_sleeptime = findViewById(R.id.rg1_sleeptime);
-        rg2_wakeuptime = findViewById(R.id.rg2_wakeuptime);
+        reference = database.getInstance().getReference().child("userAccount");//저장되는 위치 = userAccount 하위
+
+        member = new Member();//Member.java에 속한 정보들과 연동
+        account = new userAccount();//userAccount.java에 속한 정보들과 연동
+
+
+
 
         //firebase
         reference.addValueEventListener(new ValueEventListener() {
@@ -83,17 +89,19 @@ public class myChecklist extends AppCompatActivity {
         btn_my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                member.setRg1(String.valueOf((int)rg1_sleeptime.getCheckedRadioButtonId()));
+
+
+
+                /*member.setRg1(String.valueOf((int)rg1_sleeptime.getCheckedRadioButtonId()));//취침시간 저장
                 reference.child(String.valueOf(i+1)).setValue(member);
 
-                member.setRg2(String.valueOf((int)rg2_wakeuptime.getCheckedRadioButtonId()));
+                member.setRg2(String.valueOf((int)rg2_wakeuptime.getCheckedRadioButtonId()));//기상시간 저장
                 reference.child(String.valueOf(i+1)).setValue(member);
-
-                mDatabaseRef.child("userAccount").child(firebaseUser.getUid()).child(String.valueOf(firebaseUser.getIdToken(true)))
-                        .setValue(university);
+//대학정보 저장
+*/
 
                 Intent intent = new Intent(myChecklist.this, afterlogin.class);
-                startActivity(intent);
+                startActivity(intent);//저장이 완료되면 화면 전환
             }
         });
 
@@ -167,4 +175,5 @@ public class myChecklist extends AppCompatActivity {
         if (id2 == 0) ((RadioButton) findViewById(R.id.rg2_1)).setChecked(true);
         else ((RadioButton) findViewById(id2)).setChecked(true);
     }
+
 }
