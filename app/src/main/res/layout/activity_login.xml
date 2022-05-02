@@ -44,24 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="또는"
-        android:layout_marginBottom="15dp">
-
-    </TextView>
-
-    <Button
-        android:id="@+id/loginFacebook"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Log in with Facebook"
-        android:layout_marginBottom="15dp">
-
-    </Button>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
         android:text="계정이 없으신가요?"
         android:layout_marginBottom="15dp">
 

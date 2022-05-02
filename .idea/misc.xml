@@ -3,9 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2645" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/drawable/gradation_black.xml" value="0.2645" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/drawable/ic_arrow_back_black_24dp.xml" value="0.2645" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/drawable/ic_arrow_forward_black_24dp.xml" value="0.2645" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/drawable/ic_arrow_upward_black_24dp.xml" value="0.2645" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2645" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/drawable/overlay_black.xml" value="0.2645" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_afterlogin.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_card_main.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_chatting.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_get_matches.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_login.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_main.xml" value="0.334375" />
         <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_main2.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_my_checklist.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_roommate_checklist.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_show_data.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_show_matches.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/activity_signup.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/lkjh9/AndroidStudioProjects/Mop125/app/src/main/res/layout/item_card.xml" value="0.2713541666666667" />
       </map>
     </option>
   </component>
