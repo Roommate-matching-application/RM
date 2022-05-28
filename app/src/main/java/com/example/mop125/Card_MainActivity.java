@@ -27,6 +27,7 @@ public class Card_MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private CardStackLayoutManager manager;
     private CardStackAdapter adapter;
+    public int indexNum = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +44,18 @@ public class Card_MainActivity extends AppCompatActivity {
             @Override
             public void onCardSwiped(Direction direction) {
                 Log.d(TAG, "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
-                if (direction == Direction.Right){
+                if (direction == Direction.Right) {
                     Toast.makeText(Card_MainActivity.this, "선택!", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(Card_MainActivity.this, Chatting.class);
+;                    Intent intent = new Intent(Card_MainActivity.this, Chatting.class);
                     startActivity(intent);
                 }
-                if (direction == Direction.Left){
+                if (direction == Direction.Left) {
                     Toast.makeText(Card_MainActivity.this, "거절ㅠ", Toast.LENGTH_SHORT).show();
+                    indexNum++;
                 }
 
                 // Paginating
-                if (manager.getTopPosition() == adapter.getItemCount() - 5){
+                if (manager.getTopPosition() == adapter.getItemCount() - 5) {
                     paginate();
                 }
 
@@ -72,14 +73,14 @@ public class Card_MainActivity extends AppCompatActivity {
 
             @Override
             public void onCardAppeared(View view, int position) {
-                TextView tv = view.findViewById(R.id.item_name);
-                Log.d(TAG, "onCardAppeared: " + position + ", nama: " + tv.getText());
+                TextView tv = view.findViewById(R.id.item_num);
+                Log.d(TAG, "onCardAppeared: " + position + ", num: " + tv.getText());
             }
 
             @Override
             public void onCardDisappeared(View view, int position) {
-                TextView tv = view.findViewById(R.id.item_name);
-                Log.d(TAG, "onCardAppeared: " + position + ", nama: " + tv.getText());
+                TextView tv = view.findViewById(R.id.item_num);
+                Log.d(TAG, "onCardAppeared: " + position + ", num: " + tv.getText());
             }
         });
         manager.setStackFrom(StackFrom.None);
@@ -97,6 +98,8 @@ public class Card_MainActivity extends AppCompatActivity {
         cardStackView.setAdapter(adapter);
         cardStackView.setItemAnimator(new DefaultItemAnimator());
 
+
+
     }
 
     private void paginate() {
@@ -108,13 +111,16 @@ public class Card_MainActivity extends AppCompatActivity {
         hasil.dispatchUpdatesTo(adapter);
     }
 
+
+
+
     private List<ItemModel> addList() {
         List<ItemModel> items = new ArrayList<>();
-        items.add(new ItemModel(R.drawable.sample1, "Markonah", "24", "Jember"));
-        items.add(new ItemModel(R.drawable.sample2, "Marpuah", "20", "Malang"));
-        items.add(new ItemModel(R.drawable.sample3, "Sukijah", "27", "Jonggol"));
-        items.add(new ItemModel(R.drawable.sample4, "Markobar", "19", "Bandung"));
-        items.add(new ItemModel(R.drawable.sample5, "Marmut", "25", "Hutan"));
+        items.add(new ItemModel(R.drawable.sample1, "일치율 1위"));
+        items.add(new ItemModel(R.drawable.sample2, "일치율 2위"));
+        items.add(new ItemModel(R.drawable.sample3, "일치율 3위"));
+        items.add(new ItemModel(R.drawable.sample4, "일치율 4위"));
+        items.add(new ItemModel(R.drawable.sample5, "일치율 5위"));
 
 
         return items;

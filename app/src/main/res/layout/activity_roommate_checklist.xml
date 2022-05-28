@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,27 +16,36 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="룸메는?"
+        android:gravity="center"
+        android:text="룸메는 어떤 사람이면 좋겠나요?"
+        android:fontFamily="@font/notosanskr_bold"
+        android:background="#99CCFF"
         android:textSize="23dp"
-        android:padding="5dp"
+        android:textColor="@color/white"
+        android:paddingTop="30dp"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="중복선택 가능!"
         android:textSize="12dp"
-        android:padding="5dp"
+        android:textColor="@color/white"
+        android:background="#99CCFF"
         android:layout_marginBottom="15dp"
+        android:paddingBottom="30dp"
+
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="나이"
+        android:fontFamily="@font/notosanskr_bold"
+        android:gravity="center"
         android:textSize="17dp"
         android:padding="5dp"
         />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,55 +54,64 @@
             android:id="@+id/cg1_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="96"
+            android:text="20"
             />
         <CheckBox
             android:id="@+id/cg1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="97"
+            android:text="21"
             />
         <CheckBox
             android:id="@+id/cg1_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="98"
+            android:text="22"
             />
         <CheckBox
             android:id="@+id/cg1_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="99"
+            android:text="23"
             />
         <CheckBox
             android:id="@+id/cg1_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
+            android:text="24"
             />
         <CheckBox
             android:id="@+id/cg1_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="01"
+            android:text="25"
             />
         <CheckBox
             android:id="@+id/cg1_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="02"
+            android:text="26"
             />
         <CheckBox
             android:id="@+id/cg1_8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="03"
+            android:text="상관X"
             />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_margin="20dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_bold"
         android:text="흡연여부"
         android:textSize="17dp"
         android:padding="5dp"
@@ -108,14 +132,285 @@
             android:layout_height="wrap_content"
             android:text="비흡연"
             />
+        <CheckBox
+            android:id="@+id/cg2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상관X"
+            />
     </LinearLayout>
 
-    <Button
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="단과"
+        android:textSize="17dp"
+        android:padding="5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/cg3_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="같은과"
+            />
+        <CheckBox
+            android:id="@+id/cg3_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="타과"
+            />
+        <CheckBox
+            android:id="@+id/cg3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이과"
+            />
+        <CheckBox
+            android:id="@+id/cg3_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="문과"
+            />
+        <CheckBox
+            android:id="@+id/cg3_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예체능"
+            />
+        <CheckBox
+            android:id="@+id/cg3_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상관X"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="소리"
+        android:textSize="17dp"
+        android:padding="5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/cg4_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이어폰"
+            />
+        <CheckBox
+            android:id="@+id/cg4_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스피커"
+            />
+        <CheckBox
+            android:id="@+id/cg4_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="유동적"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="향수"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textSize="17dp"
+        android:padding="5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/cg5_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="미사용"
+            />
+        <CheckBox
+            android:id="@+id/cg5_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가끔"
+            />
+        <CheckBox
+            android:id="@+id/cg5_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상관X"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="준비"
+        android:textSize="17dp"
+        android:padding="5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/cg6_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="편입"
+            />
+        <CheckBox
+            android:id="@+id/cg6_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="반수"/>
+        <CheckBox
+            android:id="@+id/cg6_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="해당X"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="함께 운동"
+        android:textSize="17dp"
+        android:padding="5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/cg7_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="따로"
+            />
+        <CheckBox
+            android:id="@+id/cg7_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가끔"/>
+        <CheckBox
+            android:id="@+id/cg7_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매일"
+            />
+        <CheckBox
+            android:id="@+id/cg7_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상관X" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="함께 게임"
+        android:textSize="17dp"
+        android:padding="5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/cg8_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="따로"
+            />
+        <CheckBox
+            android:id="@+id/cg8_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가끔"/>
+        <CheckBox
+            android:id="@+id/cg8_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매일"
+            />
+        <CheckBox
+            android:id="@+id/cg8_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상관X" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_margin="20dp"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_rm"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
         android:text="저장"
+        android:background="@drawable/buttonshape"
         />
 
+
 </LinearLayout>
+
+</ScrollView>

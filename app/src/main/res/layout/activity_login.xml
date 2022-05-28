@@ -5,15 +5,31 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
+        android:src="@drawable/roommate"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        >
+        android:layout_marginBottom="20dp"/>
 
-    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="여기 제목"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textColor="@color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_centerInParent="true"
+        android:background="#939597"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_margin="15dp"/>
+
 
     <EditText
         android:id="@+id/loginEmail"
@@ -27,33 +43,37 @@
         android:id="@+id/loginPassword"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="비밀번호 입력">
-        android:layout_marginBottom="20dp"
-    </EditText>
+        android:hint="비밀번호 입력"
+        android:layout_marginBottom="20dp"/>
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Log in"
-        android:layout_marginBottom="15dp">
 
-    </Button>
+        <android.widget.Button
+            android:id="@+id/login"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/buttonshape"
+            android:fontFamily="@font/notosanskr_bold"
+            android:gravity="center"
+            android:text="Log in"
+            android:textColor="@color/white"
+            android:textFontWeight="700"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="계정이 없으신가요?"
-        android:layout_marginBottom="15dp">
+        <android.widget.Button
+            android:id="@+id/Signup"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:text="회원 가입"
+            android:textColor="@color/white"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textFontWeight="700"
+            android:background="@drawable/buttonshape"/>
 
-    </TextView>
-    <Button
-        android:id="@+id/Signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="회원 가입하기">
 
-    </Button>
+
 </LinearLayout>

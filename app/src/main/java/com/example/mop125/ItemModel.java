@@ -1,32 +1,24 @@
 package  com.example.mop125;
 
+
 public class ItemModel {
     private int image;
-    private String nama, usia, kota;
+    private String num;
 
     public ItemModel() {
     }
 
-    public ItemModel(int image, String nama, String usia, String kota) {
+    public ItemModel(int image, String num) {
         this.image = image;
-        this.nama = nama;
-        this.usia = usia;
-        this.kota = kota;
+        this.num = num;
     }
 
     public int getImage() {
         return image;
     }
 
-    public String getNama() {
-        return nama;
+    public String getNum() {
+        return num;
     }
 
-    public String getUsia() {
-        return usia;
-    }
-
-    public String getKota() {
-        return kota;
-    }
 }

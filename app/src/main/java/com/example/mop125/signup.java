@@ -17,6 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class signup extends AppCompatActivity {
 
@@ -27,6 +32,11 @@ public class signup extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
+    private FirebaseFirestore mStore;
+
+    public String UidList[] = new String[100];
+    public int index=0;
+    public String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,7 @@ public class signup extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        mStore = FirebaseFirestore.getInstance();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +66,7 @@ public class signup extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
 
-                                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                                   FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                                     userAccount account = new userAccount ();
                                     account.setIdToken(firebaseUser.getUid());
                                     account.setEmailId(firebaseUser.getEmail());
@@ -63,12 +74,17 @@ public class signup extends AppCompatActivity {
 
                                     //setValue가 데이터 insert
                                     mDatabaseRef.child("userAccount").child(firebaseUser.getUid()).setValue(account);
-                                    Toast.makeText(signup.this, "회원 가입되었습니다.", Toast.LENGTH_SHORT).show();
 
+                                        Map<String,Object> userMap = new HashMap<>();
+                                        userMap.put(FirebaseID.documentID,firebaseUser.getUid());
+                                        userMap.put(FirebaseID.postEmail,email);
+                                        userMap.put(FirebaseID.postPassword,pwd);
+                                        mStore.collection(FirebaseID.user).document(firebaseUser.getUid()).set(userMap, SetOptions.merge());
+
+                                    Toast.makeText(signup.this, "회원 가입되었습니다.", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(signup.this, login.class);
                                     startActivity(intent);
                                     finish();
-
 
                                 } else {
                                     Toast.makeText(signup.this, "등록 에러", Toast.LENGTH_SHORT).show();
