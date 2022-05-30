@@ -1,6 +1,7 @@
 package com.example.mop125;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -229,7 +230,8 @@ public class MatchRate extends AppCompatActivity {
                 }
             }
         }
+
+        for(int i=0; i<indexArray.length; i++)
+            Log.d("duid", "\narray: " + UidArray[i]);
     }
-
-
 }

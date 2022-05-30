@@ -3,6 +3,7 @@ package com.example.mop125;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,9 +104,12 @@ public class Chatting extends AppCompatActivity {
         MatchRate test2 = new MatchRate();
         index = test.indexNum;
         array = test2.UidArray;
-        destUid = array[index-1];   //채팅 상대
-        myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        destUid = array[index];   //채팅 상대
 
+        Log.d("duid", "\ndestUid: " + destUid );
+        Log.d("duid", "\nindexNum: "+ index);
+
+        myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         recyclerView = (RecyclerView) findViewById(R.id.message_recyclerview);
         button = (Button) findViewById(R.id.message_btn);
@@ -161,7 +165,7 @@ public class Chatting extends AppCompatActivity {
     private void checkChatRoom() {
         //자신 key == true 일때 chatModel 가져온다.
         /* chatModel
-        public Map<String,Boolean> users = new HashMap<>(); //채팅방 유저
+        public Map<String,Boolean> users = new HashMap<>(); //채팅방f 유저
         public Map<String, ChatModel.Comment> comments = new HashMap<>(); //채팅 메시지
         */
         firebaseDatabase.getReference().child("chatrooms").orderByChild("users/" + myuid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -200,7 +204,7 @@ public class Chatting extends AppCompatActivity {
 
         //상대방 uid 하나(single) 읽기
         private void getDestUid() {
-            firebaseDatabase.getReference().child("chatrooms").child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            firebaseDatabase.getReference().child("chatrooms").child(chatRoomUid).child("users").child(destUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     destUser = snapshot.getValue(User.class);

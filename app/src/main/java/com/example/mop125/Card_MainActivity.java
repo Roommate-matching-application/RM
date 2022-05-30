@@ -27,7 +27,7 @@ public class Card_MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private CardStackLayoutManager manager;
     private CardStackAdapter adapter;
-    public int indexNum = 1;
+    public int indexNum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
