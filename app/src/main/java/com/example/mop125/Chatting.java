@@ -102,8 +102,11 @@ public class Chatting extends AppCompatActivity {
     private void init() {
         Card_MainActivity test = new Card_MainActivity();
         MatchRate test2 = new MatchRate();
+
         index = test.indexNum;
-        array = test2.UidArray;
+
+        test2.calc(array);
+
         destUid = array[index];   //채팅 상대
 
         Log.d("duid", "\ndestUid: " + destUid );

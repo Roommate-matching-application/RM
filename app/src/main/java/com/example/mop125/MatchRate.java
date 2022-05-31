@@ -1,6 +1,5 @@
 package com.example.mop125;
 
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -57,20 +56,20 @@ public class MatchRate extends AppCompatActivity {
     public float rateArray[] = new float[100];
     public int indexArray[] = new int[100];
     private int index2;
-    public String UidArray[] = new String[100];
-
 
     FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String uid = user.getUid();
 
+    public void calc(String[] UidArray) {
+        DatabaseReference databaseReference;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        String uid = user.getUid();
         signup s = new signup();
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
         databaseReference.child("userAccount").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userAccount group = snapshot.getValue(userAccount.class);
@@ -106,132 +105,209 @@ public class MatchRate extends AppCompatActivity {
                 userEatinside = group.getUserEatinside();
                 userInsect = group.getUserInsect();
                 userHomefrequency = group.getUserHomefrequency();
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
         });
 
+        int count = 0;
+        String UidArr = "";
 
-
-        for(int i=0; i<s.UidList.length; i++){
-
-            if(s.UidList[i] != uid){
-
-                int finalI = i;
-                databaseReference.child("userAccount").child(s.UidList[i]).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        userAccount group = snapshot.getValue(userAccount.class);
-                        rate=0;
-                        if(university.equals(group.getUniversity())) {
-
-                            if(userAge == (group.getUserAge())){rate++;}
-
-                            if(userSleepTime == (group.getUserSleepTime())){rate++;}
-
-                            if(userShowertime== (group.getUserShowertime())){rate++;}
-
-                            if(userShowerwhen == (group.getUserShowerwhen())){rate++;}
-
-                            if(userCleaning == (group.getUserCleaning())){rate++;}
-
-                            if(userSleephabit == (group.getUserSleephabit())){rate++;}
-
-                            if(userAlarm == (group.getUserAlarm())){rate++;}
-
-                            if(userHot == (group.getUserHot())){rate++;}
-
-                            if(userCold == (group.getUserCold())){rate++;}
-
-                            if(userSound == (group.getUserSound())){rate++;}
-
-                            if(userPerfume == (group.getUserPerfume())){rate++;}
-
-                            if(userSmell == (group.getUserSmell())){rate++;}
-
-                            if(userDrink == (group.getUserDrink())){rate++;}
-
-                            if(userDrinkfrequency == (group.getUserDrinkfrequency())){rate++;}
-
-                            if(userAge == (group.getUserAge())){rate++;}
-
-                            if(userSleeplight == (group.getUserSleeplight())){rate++;}
-
-                            if(userSleephear == (group.getUserSleephear())){rate++;}
-
-                            if(userCallinside == (group.getUserCallinside())){rate++;}
-
-                            if(userGame == (group.getUserGame())){rate++;}
-
-                            if(userInviting == (group.getUserInviting())){rate++;}
-
-                            if(userDormitorymeal == (group.getUserDormitorymeal())){rate++;}
-
-                            if(userExercise == (group.getUserExercise())){rate++;}
-
-                            if(userExercisetype == (group.getUserExercisetype())){rate++;}
-
-                            if(userStudy == (group.getUserStudy())){rate++;}
-
-                            if(userStudyforotheruni == (group.getUserStudyforotheruni())){rate++;}
-
-                            if(userRelationship == (group.getUserRelationship())){rate++;}
-
-                            if(userEatatnight == (group.getUserEatatnight())){rate++;}
-
-                            if(userEatinside == (group.getUserEatinside())){rate++;}
-
-                            if(userInsect == (group.getUserInsect())){rate++;}
-
-                            if(userHomefrequency == (group.getUserHomefrequency())){rate++;}
-
-                            if(userSmoke == (group.getUserSmoke())){rate++;}
-
-                            rateArray[index2] = rate/30 * 100;
-                            indexArray[index2] = finalI;
-                            index2++;
-
+        for (int i = 0; i < s.UidList.length; i++) {
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            //UidArr += snapshot.getValue() + " ";
+                            //UidArray[count] = UidArr;
+                            Log.d("duid", "\ns.UidList[i]1: " + snapshot.getValue());
                         }
                     }
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
+                    public void onCancelled(@NonNull DatabaseError error) {}
                 });
-            }
-            else{continue;}
-        }
 
-        for(int i=0; i<100; i++){
-            UidArray[i] = s.UidList[i];
-        }
+                if (UidArray[i] != uid) {
+                    Log.d("duid", "\ns.UidList[i]2: " + UidArray[i]);
 
+                    int finalI = i;
+                    databaseReference.child("userAccount").child(UidArray[i]).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            userAccount group = snapshot.getValue(userAccount.class);
+                            rate = 0;
+                            if (university.equals(group.getUniversity())) {
 
-        for(int i=0; i<indexArray.length; i++){
-            for(int j=0; j<indexArray.length-i; j++){
-                if(rateArray[j]<rateArray[j+1]){
-                    float temp = rateArray[j];
-                    rateArray[j] = rateArray[j+1];
-                    rateArray[j+1] = temp;
+                                if (userAge == (group.getUserAge())) {
+                                    rate++;
+                                }
 
-                    int temp1 = indexArray[j];
-                    indexArray[j] = indexArray[j+1];
-                    indexArray[j+1] = temp1;
+                                if (userSleepTime == (group.getUserSleepTime())) {
+                                    rate++;
+                                }
 
-                    String temp2 = UidArray[j];
-                    UidArray[j] = UidArray[j+1];
-                    UidArray[j+1] = temp2;
+                                if (userShowertime == (group.getUserShowertime())) {
+                                    rate++;
+                                }
 
+                                if (userShowerwhen == (group.getUserShowerwhen())) {
+                                    rate++;
+                                }
+
+                                if (userCleaning == (group.getUserCleaning())) {
+                                    rate++;
+                                }
+
+                                if (userSleephabit == (group.getUserSleephabit())) {
+                                    rate++;
+                                }
+
+                                if (userAlarm == (group.getUserAlarm())) {
+                                    rate++;
+                                }
+
+                                if (userHot == (group.getUserHot())) {
+                                    rate++;
+                                }
+
+                                if (userCold == (group.getUserCold())) {
+                                    rate++;
+                                }
+
+                                if (userSound == (group.getUserSound())) {
+                                    rate++;
+                                }
+
+                                if (userPerfume == (group.getUserPerfume())) {
+                                    rate++;
+                                }
+
+                                if (userSmell == (group.getUserSmell())) {
+                                    rate++;
+                                }
+
+                                if (userDrink == (group.getUserDrink())) {
+                                    rate++;
+                                }
+
+                                if (userDrinkfrequency == (group.getUserDrinkfrequency())) {
+                                    rate++;
+                                }
+
+                                if (userAge == (group.getUserAge())) {
+                                    rate++;
+                                }
+
+                                if (userSleeplight == (group.getUserSleeplight())) {
+                                    rate++;
+                                }
+
+                                if (userSleephear == (group.getUserSleephear())) {
+                                    rate++;
+                                }
+
+                                if (userCallinside == (group.getUserCallinside())) {
+                                    rate++;
+                                }
+
+                                if (userGame == (group.getUserGame())) {
+                                    rate++;
+                                }
+
+                                if (userInviting == (group.getUserInviting())) {
+                                    rate++;
+                                }
+
+                                if (userDormitorymeal == (group.getUserDormitorymeal())) {
+                                    rate++;
+                                }
+
+                                if (userExercise == (group.getUserExercise())) {
+                                    rate++;
+                                }
+
+                                if (userExercisetype == (group.getUserExercisetype())) {
+                                    rate++;
+                                }
+
+                                if (userStudy == (group.getUserStudy())) {
+                                    rate++;
+                                }
+
+                                if (userStudyforotheruni == (group.getUserStudyforotheruni())) {
+                                    rate++;
+                                }
+
+                                if (userRelationship == (group.getUserRelationship())) {
+                                    rate++;
+                                }
+
+                                if (userEatatnight == (group.getUserEatatnight())) {
+                                    rate++;
+                                }
+
+                                if (userEatinside == (group.getUserEatinside())) {
+                                    rate++;
+                                }
+
+                                if (userInsect == (group.getUserInsect())) {
+                                    rate++;
+                                }
+
+                                if (userHomefrequency == (group.getUserHomefrequency())) {
+                                    rate++;
+                                }
+
+                                if (userSmoke == (group.getUserSmoke())) {
+                                    rate++;
+                                }
+
+                                rateArray[index2] = rate / 30 * 100;
+                                indexArray[index2] = finalI;
+                                index2++;
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                } else {
+                    continue;
                 }
             }
+
+            for (int j = 0; j < 100; j++) {
+                UidArray[j] = s.UidList[j];
+            }
+
+
+            for (int k = 0; k < indexArray.length; k++) {
+                for (int j = 0; j < indexArray.length - j; j++) {
+                    if (rateArray[j] < rateArray[j + 1]) {
+                        float temp = rateArray[j];
+                        rateArray[j] = rateArray[j + 1];
+                        rateArray[j + 1] = temp;
+
+                        int temp1 = indexArray[j];
+                        indexArray[j] = indexArray[j + 1];
+                        indexArray[j + 1] = temp1;
+
+                        String temp2 = UidArray[j];
+                        UidArray[j] = UidArray[j + 1];
+                        UidArray[j + 1] = temp2;
+
+                    }
+                }
+            }
+
+            for (int l = 0; l < indexArray.length; l++)
+                Log.d("duid", "\narray: " + UidArray[l]);
+
         }
 
-        for(int i=0; i<indexArray.length; i++)
-            Log.d("duid", "\narray: " + UidArray[i]);
     }
-}
+
