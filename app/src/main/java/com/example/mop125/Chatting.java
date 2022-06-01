@@ -105,9 +105,9 @@ public class Chatting extends AppCompatActivity {
 
         index = test.indexNum;
 
-        test2.calc(array);
+        //test2.calc(array);
 
-        destUid = array[index];   //채팅 상대
+        //destUid = array[index];   //채팅 상대
 
         Log.d("duid", "\ndestUid: " + destUid );
         Log.d("duid", "\nindexNum: "+ index);
@@ -207,7 +207,7 @@ public class Chatting extends AppCompatActivity {
 
         //상대방 uid 하나(single) 읽기
         private void getDestUid() {
-            firebaseDatabase.getReference().child("chatrooms").child(chatRoomUid).child("users").child(destUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            firebaseDatabase.getReference().child("chatrooms").child(chatRoomUid).child("users").child(myuid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     destUser = snapshot.getValue(User.class);

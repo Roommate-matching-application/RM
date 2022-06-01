@@ -69,7 +69,6 @@ public class MatchRate extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         databaseReference.child("userAccount").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userAccount group = snapshot.getValue(userAccount.class);
@@ -112,23 +111,14 @@ public class MatchRate extends AppCompatActivity {
             }
         });
 
-        int count = 0;
-        String UidArr = "";
-
         for (int i = 0; i < s.UidList.length; i++) {
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            //UidArr += snapshot.getValue() + " ";
-                            //UidArray[count] = UidArr;
-                            Log.d("duid", "\ns.UidList[i]1: " + snapshot.getValue());
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
-                });
+            //String uidar = databaseReference.child("userAccount").getRef().child();
+            //UidArray[i] = uidar;
+            //Log.d("duid", "\n uid: " + uidar);
+            Log.d("duid", "\ns.UidList[i]1: " + UidArray[i]);
 
                 if (UidArray[i] != uid) {
+                    Log.d("duid", "\n i: " + i);
                     Log.d("duid", "\ns.UidList[i]2: " + UidArray[i]);
 
                     int finalI = i;
