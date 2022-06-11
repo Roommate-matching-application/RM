@@ -3,7 +3,6 @@ package com.example.mop125;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,12 +106,8 @@ public class Chatting extends AppCompatActivity {
 
         //test2.calc(array);
 
-        //destUid = array[index];   //채팅 상대
-
-        Log.d("duid", "\ndestUid: " + destUid );
-        Log.d("duid", "\nindexNum: "+ index);
-
         myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        destUid = myuid;
 
         recyclerView = (RecyclerView) findViewById(R.id.message_recyclerview);
         button = (Button) findViewById(R.id.message_btn);
@@ -210,7 +205,7 @@ public class Chatting extends AppCompatActivity {
             firebaseDatabase.getReference().child("chatrooms").child(chatRoomUid).child("users").child(myuid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    destUser = snapshot.getValue(User.class);
+                    //destUser = snapshot.getValue(User.class);
                     //채팅 내용 읽어들임
                     getMessageList();
                 }
