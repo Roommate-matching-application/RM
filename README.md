@@ -31,3 +31,15 @@ so, someone can become roomates with the people match well as much as possible t
    ![image](https://user-images.githubusercontent.com/84308922/173223945-77e05445-1c52-4ad7-a552-9f179d7e42e8.png)
 
 
+2. SignUp
+   
+   Create an account by entering an email and password to log in
+   
+   *Restriction*
+   
+   1. ID Must be in email format
+
+   2. Password must be at least 8 characters
+
+
+
