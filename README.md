@@ -126,3 +126,6 @@ so, someone can become roomates with the people match well as much as possible t
 
    ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/84308922/173226928-6a4094b2-98f8-46de-8335-b1df94cc7400.gif)
 
+
+## 10. App execution
+
