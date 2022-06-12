@@ -1,4 +1,4 @@
-## Motivation
+# Motivation
 
 College students become roommates without knowing each other.
 
@@ -8,7 +8,7 @@ so, someone can become roomates with the people match well as much as possible t
 
 
 
-## System Flow
+# System Flow
 
 * signUp
 * login
@@ -21,9 +21,29 @@ so, someone can become roomates with the people match well as much as possible t
 * Chatting
 * Post
 
-## Content
 
-1. Login
+
+# Required technology for implementation
+
+## 1. Firebase real-time database
+
+   - User account
+
+   - Chatting
+
+   - Board system
+
+## 2. Server-Client Connection
+
+   - Use data in the database on app
+
+   - Update the data the database in the app
+ 
+
+
+# Content
+
+## 1. Login
 
    User can log in by entering email and password
    
@@ -32,38 +52,76 @@ so, someone can become roomates with the people match well as much as possible t
    ![image](https://user-images.githubusercontent.com/84308922/173223945-77e05445-1c52-4ad7-a552-9f179d7e42e8.png)
 
 
-2. SignUp
+## 2. SignUp
    
    Create an account by entering an email and password to log in
    
    *Restriction*
    
-   1. ID Must be in email format
+   - ID Must be in email format
 
-   2. Password must be at least 8 characters
+   - Password must be at least 8 characters
 
 ![image](https://user-images.githubusercontent.com/84308922/173224227-41fc63da-1bce-4244-bb4f-00ef35291c97.png)
 
 
-3. afterLogin
+## 3. afterLogin
    
    *Three button*
    
-   1. Servey about me
+   - Servey about me
    
-   2. Servey about roommate
+   - Servey about roommate
    
-   3. button to move to community
+   - button to move to community
    
    *Toast message output if login is successful*
    
 ![image](https://user-images.githubusercontent.com/84308922/173224304-5fc202e5-e427-45b0-b0da-cbcdda714910.png)
 
-4. MyChecklist
+## 4. MyChecklist
    
    Show where you conduct a survey about yourself
    
    ![image](https://user-images.githubusercontent.com/84308922/173224357-092cba14-478d-4411-8115-2aa4ed570573.png)
+
+## 5. RoommateChecklist
    
+   Show where you conduct a survey about roommate
    
+   ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/84308922/173224738-5030efcf-bba5-475b-bc78-480552d9a993.gif)
+
+## 6. GetMatches
+   
+   The screen that shows you when the survey is completed
+   
+   - 'Check result' button
+   - Calculate match rates based on surveys
+
+   ![image](https://user-images.githubusercontent.com/84308922/173224812-84a494e2-cc01-4400-9e8d-1d1a9d133fe4.png)
+   
+## 7. CardView
+   
+   Build UI to turn left and right
+   
+   If you turn left, it's rejected
+   
+   If you turn right, it's accepted (move to chat room)
+   
+   ![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/84308922/173224940-4cc609a5-e025-449b-9015-8c48267c0539.gif)
+
+## 8. Chatting 
+   
+   Can chat with person with high match rates
+   
+   'Board button' on the top allows you to go to board
+   
+   ![image](https://user-images.githubusercontent.com/84308922/173226649-4f99da2a-2f93-400e-b003-8b36e28e92a4.png)
+
+
+## 9. Post
+
+   Can write and see what others have written
+
+   ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/84308922/173226928-6a4094b2-98f8-46de-8335-b1df94cc7400.gif)
 
