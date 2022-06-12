@@ -28,6 +28,6 @@ so, someone can become roomates with the people match well as much as possible t
    
    If you don't have an account, you can create an account by pressing the Membership
    
-   <img src="[/uploads/1848994ad25765da30fa8ef3684c67bc/캡처.PNG](https://user-images.githubusercontent.com/84308922/173223945-77e05445-1c52-4ad7-a552-9f179d7e42e8.png)"  width="500" height="70">
+   <img src="https://user-images.githubusercontent.com/84308922/173223945-77e05445-1c52-4ad7-a552-9f179d7e42e8.png"  width="500" height="70">
 
 
