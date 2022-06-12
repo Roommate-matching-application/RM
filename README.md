@@ -83,7 +83,8 @@ so, someone can become roomates with the people match well as much as possible t
    
    Show where you conduct a survey about yourself
    
-   ![image](https://user-images.githubusercontent.com/84308922/173224357-092cba14-478d-4411-8115-2aa4ed570573.png)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/84308922/173226981-dc4fe637-f386-45d1-b1ce-38e2e50f6e94.gif)
+
 
 ## 5. RoommateChecklist
    
